@@ -73,13 +73,14 @@ const score_tickets = (winning_numbers, playing_numbers) => {
   return prize;
 };
 
-const play_a_lottery_ticket = async () => {
+const play_a_lottery_ticket = async (delay = 1000) => {
   if (ticket_queue == 0) return 
   [last_winning_numbers, last_played_numbers] = [generate_numbers(), generate_numbers()];
   let prize = score_tickets(last_winning_numbers, last_played_numbers);
   ledger += prize;
   result_as_number = prize;
   ticket_queue -= 1;
+  await new Promise(resolve => setTimeout(resolve, delay));
 }
 
 const update_interface = async () => {
@@ -100,8 +101,11 @@ const update_interface = async () => {
 const begin_playing = async () => {
   if (currently_playing) return;
   currently_playing = true;
+  let delay = 1200;
   while(ticket_queue > 0) {
-    await play_a_lottery_ticket();
+    delay = delay * .9;
+    delay = Math.max(delay, 150);
+    await play_a_lottery_ticket(delay);
     await update_interface();
   }
   return currently_playing = false;
