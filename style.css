@@ -1,0 +1,9 @@
+:root {
+  --embed-window-height: 800px;
+  --embed-window-width: 600px;
+}
+
+body {
+  max-height: var(--embed-window-height);
+  max-width: var(--embed-window-width);
+}
