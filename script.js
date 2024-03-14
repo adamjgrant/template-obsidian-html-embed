@@ -13,6 +13,8 @@ const play_a_lottery_ticket = () => {
   if (ticket_queue == 0) return 
   const winning_numbers = (new Array(5).fill()).map(x => getRandomInteger(1,69))
   console.log(winning_numbers)
+  const playing_numbers = (new Array(5).fill()).map(x => getRandomInteger(1,69))
+  console.log(playing_numbers)
   console.log("Played a lottery ticket")
   ticket_queue -= 1;
 }
