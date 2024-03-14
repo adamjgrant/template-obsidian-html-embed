@@ -6,4 +6,9 @@
 body {
   max-height: var(--embed-window-height);
   max-width: var(--embed-window-width);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
 }
