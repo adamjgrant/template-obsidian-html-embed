@@ -3,6 +3,7 @@ let currently_playing = false;
 let ledger = 1000000;
 let last_winning_numbers = [0, 0, 0, 0, 0, 0];
 let last_played_numbers = [0, 0, 0, 0, 0, 0];
+let result_as_number = -1;
 
 function getRandomInteger(min, max) {
   // Ensuring the min and max are integers
@@ -77,8 +78,8 @@ const play_a_lottery_ticket = async () => {
   [last_winning_numbers, last_played_numbers] = [generate_numbers(), generate_numbers()];
   let prize = score_tickets(last_winning_numbers, last_played_numbers);
   ledger += prize;
+  result_as_number = prize;
   ticket_queue -= 1;
-  ledger -= 1;
 }
 
 const update_interface = async () => {
@@ -90,6 +91,10 @@ const update_interface = async () => {
   last_played_numbers.forEach((number, index) => {
     document.getElementById(`pick-${index+1}`).innerText = number;
   })
+  let result_as_word = {
+    "-1": "LOSE", "0": "DRAW", "1": "WIN"
+  }[result_as_number/Math.abs(result_as_number)];
+  result.innerText = `${result_as_word}: $${result_as_number}`
 }
 
 const begin_playing = async () => {
@@ -127,3 +132,4 @@ button_names.forEach(id => {
 });
 
 const ledgerBalance = document.getElementById("ledger-balance");
+const result = document.getElementById("result");
