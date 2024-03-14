@@ -9,11 +9,16 @@ function getRandomInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+const generate_numbers = () => {
+  let numbers = (new Array(5).fill()).map(x => getRandomInteger(1,69));
+  numbers.push(getRandomInteger(1,26));
+  return numbers;
+}
+
 const play_a_lottery_ticket = () => {
   if (ticket_queue == 0) return 
-  const winning_numbers = (new Array(5).fill()).map(x => getRandomInteger(1,69))
+  const [winning_numbers, playing_numbers] = [generate_numbers(), generate_numbers()];
   console.log(winning_numbers)
-  const playing_numbers = (new Array(5).fill()).map(x => getRandomInteger(1,69))
   console.log(playing_numbers)
   console.log("Played a lottery ticket")
   ticket_queue -= 1;
