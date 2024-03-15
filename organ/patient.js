@@ -1,30 +1,33 @@
 export class Patient {
   constructor(organ) {
-    this.organ = organ; // The organ the patient is waiting for
-    this.healthStatus = 100; // Health on a scale of 0 to 100
-    this.currentDate = new Date(); // Starting date
-    this.waitingTime = 0; // Time spent waiting for a transplant in months
-    this.hasTransplant = false; // If the patient has received a transplant
-    this.waitingForTransplant = false; // If the patient has a match and is waiting for surgery
-    this.chanceOfTransplant = this.calculateChanceOfTransplant(); // Dynamically calculated
+    this.organ = organ;
+    this.healthStatus = 100;
+    this.currentDate = new Date();
+    this.waitingTime = 0;
+    this.hasTransplant = false;
+    this.waitingForTransplant = false;
+    this.chanceOfTransplant = this.calculateChanceOfTransplant();
     this.chanceOfSurvivalWithTransplant = this.calculateChanceOfSurvival(true);
     this.chanceOfSurvivalWithoutTransplant = this.calculateChanceOfSurvival(false);
   }
 
   calculateChanceOfTransplant() {
-    // Placeholder for transplant chance calculation logic
-    // This should factor in waiting time, organ-specific data, etc.
-    return 0; // Placeholder return
+    // Simplified calculation
+    const baseChance = 10; // Base chance of transplant for simplicity
+    return Math.min(100, baseChance + (this.waitingTime * 2)); // Increase chance by 2% every month
   }
 
   calculateChanceOfSurvival(withTransplant) {
-    // Placeholder for survival chance calculation logic
-    // This should factor in health status, with/without transplant, etc.
-    return withTransplant ? 0 : 0; // Placeholder return
+    if (withTransplant) {
+      // Assume survival rate improves immediately after transplant
+      return this.organ.survivalRate1Year;
+    } else {
+      // Decrease survival chance as health declines
+      return Math.max(0, this.organ.survivalRate1Year - (100 - this.healthStatus));
+    }
   }
 
   updateMonthly() {
-    // Method to simulate monthly updates: health deterioration, waiting time increase, etc.
     this.waitingTime += 1;
     this.decreaseHealth();
     this.chanceOfTransplant = this.calculateChanceOfTransplant();
@@ -33,8 +36,20 @@ export class Patient {
   }
 
   decreaseHealth() {
-    // Placeholder for health decrease logic
-    // Health should decrease over time, rate can depend on organ and waiting time
-    this.healthStatus -= 1; // Simplified example
+    // Health decreases based on organ's daily mortality rate over a month
+    const monthlyDecline = 30 * this.organ.dailyMortalityRate * 100; // Simplified monthly health decline
+    this.healthStatus = Math.max(0, this.healthStatus - monthlyDecline);
+  }
+
+  updateDaily() {
+    // For daily updates, adjust this method to decrease health daily and check for transplant matches
+    this.decreaseHealthDaily();
+    // Other daily updates can go here
+  }
+
+  decreaseHealthDaily() {
+    // Health decreases based on organ's daily mortality rate
+    const dailyDecline = this.organ.dailyMortalityRate * 100; // Daily health decline
+    this.healthStatus = Math.max(0, this.healthStatus - dailyDecline);
   }
 }
