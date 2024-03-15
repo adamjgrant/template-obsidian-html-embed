@@ -1,29 +1,9 @@
-const generalDailyMortalityRate = 0.00017; // Generalized daily mortality rate
+import { Organ } from "organ.js";
+import { Patient } from "patient.js";
 
-const organData = {
-  kidney: {
-    medianWaitTime: 5 * 12, // in months
-    survivalRate1Year: 95,
-    survivalRate5Year: 95,
-    dailyMortalityRate: generalDailyMortalityRate, // Placeholder until specific data found
-  },
-  liver: {
-    medianWaitTime: 11, // in months
-    survivalRate1Year: 75,
-    survivalRate5Year: 75,
-    dailyMortalityRate: 0.0336, // Specific mortality rate per 100 waiting list-years
-  },
-  heart: {
-    medianWaitTime: 4, // in months
-    survivalRate1Year: 90,
-    survivalRate5Year: 80,
-    dailyMortalityRate: 0.0235, // Specific mortality rate per 100 waiting list-years
-  },
-  lung: {
-    medianWaitTime: 4, // in months
-    survivalRate1Year: 88,
-    survivalRate5Year: 60,
-    dailyMortalityRate: 0.0441, // Updated with specific mortality rate per 100 waiting list-years
-  },
-  // Other organs' data remains unchanged for now
-};
+const kidney = new Organ('Kidney', 60, 95, 95, 0.00017);
+const liver = new Organ('Liver', 11, 75, 75, 0.0336);
+const heart = new Organ('Heart', 4, 90, 80, 0.0235);
+const lung = new Organ('Lung', 4, 88, 60, 0.0441);
+const kidneyPancreas = new Organ('Kidney-Pancreas', 18, 96, 89.7, 0.00017);
+const pancreas = new Organ('Pancreas', 24, 95, 88, 0.00017);
