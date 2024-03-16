@@ -63,6 +63,8 @@ export class Game {
       const spacer = document.importNode(spacer_template.content, true);
       entry_zone.appendChild(spacer);
     });
+    const entry_zone_holder = document.getElementById("entry-zone-holder");
+    entry_zone_holder.innerHTML = "";
   }
 
   set blinking_cursor(index = 0) {
@@ -102,15 +104,16 @@ export class Game {
       const entry_zone_holder = document.getElementById("entry-zone-holder");
       const scored_guess = this.score_guess(guess);
       console.log(scored_guess);
-      entry_zone_holder.prepend(entry_zone_copy);
+      entry_zone_holder.appendChild(entry_zone_copy);
       
       // Find the entry zone we just added
-      const last_added_entry_zone = Array.from(entry_zone_holder.querySelectorAll(".entry-zone"))[0];
+      const last_added_entry_zone = Array.from(entry_zone_holder.querySelectorAll(".entry-zone")).reverse()[0];
       last_added_entry_zone.querySelectorAll(".spacer").forEach((spacer, index) => {
         spacer.classList.add(`score-${scored_guess[index].score}`);
         spacer.classList.remove("blink");
         spacer.innerText = scored_guess[index].letter;
       });
+      last_added_entry_zone.removeAttribute("id");
       last_added_entry_zone.classList.remove("main");
     }
   }
