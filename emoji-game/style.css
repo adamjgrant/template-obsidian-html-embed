@@ -1,7 +1,7 @@
 * { box-sizing: border-box; }
 
 :root {
-  --green: #a1ef9a;
+  --green: #bcef9a;
   --yellow: #efd667;
 }
 
@@ -20,6 +20,7 @@
   width: 100vw;
   padding: 0;
   margin: 0;
+  overflow: auto;
 }
 
 .entry-zone {
@@ -53,10 +54,12 @@
 
 .entry-zone .spacer.score-green {
   background: var(--green);
+  color: rgb(5, 72, 5)
 }
 
 .entry-zone .spacer.score-yellow {
   background: var(--yellow);
+  color: rgb(59, 59, 10)
 }
 
 @keyframes blink {
@@ -79,15 +82,21 @@
   text-align: center;
   font-size: 50px;
   display: block;
+}
+
+.equation,
+.history-zone {
   transition: opacity 0.5s ease;
 }
 
-.equation.transparent {
+.equation.transparent,
+.history-zone.transparent {
   opacity: 0;
 }
 
 .history-zone .equation { 
   opacity: 1;
+  margin-bottom: 10px;
 }
 
 .clue { 
@@ -136,7 +145,6 @@
 
 .keyboard-row button {
   --button-margin: 3px;
-  padding: 0;
   margin: 0;
   border: none;
   background: none;
@@ -147,7 +155,7 @@
   cursor: pointer;
   box-sizing: border-box; /* Recommended for better control over padding and borders */
   /* Custom styles below */
-  padding: 8px 10px;
+  padding: 8px 0px;
   margin: var(--button-margin);
   background-color: #444; /* Dark gray background */
   color: white; /* White text */
@@ -219,5 +227,15 @@
   body {
     color: white;
     background: black;
+  }
+
+  @keyframes blink {
+    0% { background: #555; }
+    50% { background: #888;}
+    100% { background: #555; }
+  }
+
+  .entry-zone .spacer {
+    background: #555;
   }
 }

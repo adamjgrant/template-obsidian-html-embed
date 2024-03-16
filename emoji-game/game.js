@@ -38,6 +38,7 @@ export class Game {
 
   set_up_round() {
     this.increment_round();
+    this.show_history();
     if (this.active_round > this.game_emojis.length) {
       return this.show_curtain();
     }
@@ -141,12 +142,26 @@ export class Game {
     history_zone.appendChild(equation_copy);
   }
 
-  show_answer() {
-    this.clue_equals_element.innerText = this.emoji_answer;
+  hide_history() {
+    const history_zone = document.getElementById("history-zone");
+    history_zone.classList.add("transparent");
+  }
+  show_history() {
+    const history_zone = document.getElementById("history-zone");
+    history_zone.classList.remove("transparent");
+  }
+
+  hide_entry_zones() {
     Array.from(document.querySelectorAll(".entry-zone")).forEach(entry_zone => {
       entry_zone.classList.add("hide");
     });
+  }
+
+  show_answer() {
+    this.clue_equals_element.innerText = this.emoji_answer;
     this.animate_clue_equals();
+    this.hide_entry_zones();
+    this.hide_history();
   }
 
   animate_clue_equals() {
