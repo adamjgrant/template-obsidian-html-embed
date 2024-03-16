@@ -30,8 +30,30 @@
   font-size: 18px;
 }
 
-.cursor {
+.guess {
   font-size: 22px;
+}
+
+.guess input {
+  --letter-spacing: 10px;
+  font-family: monospace;
+  letter-spacing: var(--letter-spacing);
+  display: inline-block;
+  text-transform: uppercase;
+  width: calc(1ch + var(--letter-spacing));
+  text-align: right;
+  border: none;
+  outline: none;
+}
+
+@keyframes blink {
+  50%, 100% { opacity: 1; }
+  0%, 49% { opacity: 0; }
+}
+
+.cursor { 
+  animation: blink 1s infinite; 
+  display: inline-block;
 }
 
 @media (prefers-color-scheme: dark) {
