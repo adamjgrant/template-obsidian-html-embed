@@ -97,6 +97,7 @@
   display: flex;
   justify-content: center;
   height: 25%;
+  touch-action: manipulation;
 }
 
 .keyboard-row button {
@@ -124,6 +125,7 @@
   height: calc(100% - 10px);
   font-family: "Rancho", sans-serif;
   font-size: 28px;
+  touch-action: manipulation;
 }
 
 
