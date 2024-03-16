@@ -149,6 +149,7 @@ export class Game {
   animate_clue_equals() {
     // Create a copy of the #clue-equals element
     const clue_equals_copy = this.clue_equals_element.cloneNode(true);
+    const equation = document.getElementById("equation");
 
     // Find out the x and y position of the original #clue-equals element
     let rect = this.clue_equals_element.getBoundingClientRect();
@@ -165,20 +166,34 @@ export class Game {
 
     // First make the element really big and move to center.
     let original_font_size = getComputedStyle(clue_equals_copy_element).fontSize;
-    clue_equals_copy_element.classList.add(...ANIMATION_CLASSES);
-    clue_equals_copy_element.style.left = `calc(50vw - ${width/2}px)`;
-    clue_equals_copy_element.style.top = `calc(50vh - ${height/2}px)`;
+    clue_equals_copy_element.style.left = `calc(40svw - ${width/2}px)`;
+    clue_equals_copy_element.style.top = `calc(40svh - ${height/2}px)`;
     clue_equals_copy_element.style.fontSize = "150px";
+    equation.classList.add("transparent");
 
     // Halfway in, make it the original size again and move it approximately to where it will go
     setTimeout(() => {
-      // TODO set left and right values to the new first clue position
+      clue_equals_copy_element.classList.add(...ANIMATION_CLASSES);
       clue_equals_copy_element.style.fontSize = original_font_size;
+      const clue_first_element = document.getElementById("clue-first");
+      const first_rect = clue_first_element.getBoundingClientRect();
+      clue_equals_copy_element.style.left = first_rect.left + "px";
+      clue_equals_copy_element.style.top = first_rect.top + "px";
+      clue_equals_copy_element.style.fontSize = getComputedStyle(clue_first_element).fontSize;
     }, TIME_TO_CELEBRATE/2);
     setTimeout(() => {
       // Now that we know the position of the new first clue, move it exactly there.
+      const clue_first_element = document.getElementById("clue-first");
+      const first_rect = clue_first_element.getBoundingClientRect();
+      clue_equals_copy_element.style.left = first_rect.left + "px";
+      clue_equals_copy_element.style.top = first_rect.top + "px";
+    }, TIME_TO_CELEBRATE + 100);
+    setTimeout(() => {
+      equation.classList.remove("transparent");
+    }, TIME_TO_CELEBRATE + 200 + 500);
+    setTimeout(() => {
       clue_equals_copy.parentNode.removeChild(clue_equals_copy);
-    }, TIME_TO_CELEBRATE + 200);
+    }, TIME_TO_CELEBRATE + 200 + 1000);
 
   }
 
