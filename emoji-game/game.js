@@ -1,5 +1,6 @@
 const TIME_TO_CELEBRATE = 2000;
 const MAX_NUMBER_OF_TRIES = 5;
+const ANIMATION_CLASSES = ["animate__animated", "animate__jackInTheBox"]
 
 export class Game {
   constructor(game) {
@@ -123,7 +124,7 @@ export class Game {
 
   reset_clue_equals() {
     this.clue_equals_element.innerText = "?";
-    this.clue_equals_element.classList.remove("animate__animated", "animate__jackInTheBox");
+    this.clue_equals_element.classList.remove(...ANIMATION_CLASSES);
     Array.from(document.querySelectorAll(".entry-zone")).forEach(entry_zone => {
       entry_zone.classList.remove("hide");
     });
@@ -139,10 +140,35 @@ export class Game {
 
   show_answer() {
     this.clue_equals_element.innerText = this.emoji_answer;
-    this.clue_equals_element.classList.add("animate__animated", "animate__jackInTheBox");
     Array.from(document.querySelectorAll(".entry-zone")).forEach(entry_zone => {
       entry_zone.classList.add("hide");
     });
+    this.animate_clue_equals();
+  }
+
+  animate_clue_equals() {
+    // Create a copy of the #clue-equals element
+    const clue_equals_copy = this.clue_equals_element.cloneNode(true);
+
+    // Find out the x and y position of the original #clue-equals element
+    let rect = this.clue_equals_element.getBoundingClientRect();
+    let [x, y] = [rect.left, rect.top];
+
+    // Create a new element with the same text content as the original #clue-equals element with the .floating_clue class
+    clue_equals_copy.classList.add("floating_clue");
+    clue_equals_copy.removeAttribute("id");
+    document.body.appendChild(clue_equals_copy);
+    console.log(document.querySelector(".floating_clue"));
+    clue_equals_copy.style.left = `${x}px`;
+    clue_equals_copy.style.top = `${y}px`;
+
+    setTimeout(() => {
+      clue_equals_copy.classList.add(...ANIMATION_CLASSES);
+    }, TIME_TO_CELEBRATE/2);
+    setTimeout(() => {
+      clue_equals_copy.parentNode.removeChild(clue_equals_copy);
+    }, TIME_TO_CELEBRATE);
+
   }
 
   submit_guess(guess) {
