@@ -87,6 +87,10 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.history-zone .equation {
+  font-size: 20px;
+}
+
 /* KEYBOARD */
 .keyboard {
   height: 33.3vh;

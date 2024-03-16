@@ -107,11 +107,20 @@ export class Game {
     this.clue_equals_element.classList.remove("animate__animated", "animate__jackInTheBox");
   }
 
+  copy_clues_to_history() {
+    const history_zone = document.getElementById("history-zone");
+    const equation = document.getElementById("equation");
+    // Copy equation and insert it into the history zone.
+    const equation_copy = equation.cloneNode(true);
+    history_zone.appendChild(equation_copy);
+  }
+
   submit_guess(guess) {
     const scored_guess = this.score_guess(guess);
 
     if (guess === this.word_answer) {
       setTimeout(() => {
+        this.copy_clues_to_history();
         this.set_up_round();
       }, TIME_TO_CELEBRATE);
 
