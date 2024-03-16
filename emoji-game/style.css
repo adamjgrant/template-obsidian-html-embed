@@ -43,6 +43,14 @@
   line-height:44px;
 }
 
+.entry-zone .spacer.score-green {
+  background: #a1ef58;
+}
+
+.entry-zone .spacer.score-yellow {
+  background: #FF0;
+}
+
 @keyframes blink {
   0% {
     background: #EEE;
