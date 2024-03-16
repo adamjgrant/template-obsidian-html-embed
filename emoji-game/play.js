@@ -35,9 +35,13 @@ for (let round = 1; round<6; round++) {
 // Start showing the game
 spots.round_1_1.innerText = game_emojis[0][0];
 spots.round_1_2.innerText = game_emojis[0][1];
-active_round = 1;
+let active_round = 1;
+const hint_element = document.getElementById("hint");
+const hint = todaysGame.clue;
+hint_element.innerText = `Today's hint: ${hint}`;
 
 const guesses = Array.from(document.querySelectorAll(".guess input"))
+guesses[0].focus();
 guesses.forEach((guess_element) => {
   const width_unit = guess_element.getBoundingClientRect().width - 5;
   guess_element.addEventListener("keyup", (e) => {
@@ -47,4 +51,3 @@ guesses.forEach((guess_element) => {
     e.target.style.width = `${new_width}px`;
   })
 })
-

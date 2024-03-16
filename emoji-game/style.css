@@ -60,6 +60,15 @@
   margin-left: -10px;
 }
 
+.hint {
+  display: block;
+  width: 165px;
+  height: 50px;
+  word-wrap: break-word;
+  white-space: initial;
+  margin: 0;
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     color: white;
