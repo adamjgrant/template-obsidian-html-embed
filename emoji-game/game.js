@@ -95,6 +95,8 @@ export class Game {
   }
 
   submit_guess(guess) {
+    const scored_guess = this.score_guess(guess);
+
     if (guess === this.word_answer) {
       this.set_up_round();
     }
@@ -103,7 +105,6 @@ export class Game {
       const entry_zone = document.getElementById("entry-zone");
       const entry_zone_copy = entry_zone.cloneNode(true);
       const entry_zone_holder = document.getElementById("entry-zone-holder");
-      const scored_guess = this.score_guess(guess);
       entry_zone_holder.appendChild(entry_zone_copy);
       
       // Find the entry zone we just added
@@ -115,7 +116,7 @@ export class Game {
       });
       last_added_entry_zone.removeAttribute("id");
       last_added_entry_zone.classList.remove("main");
-      return scored_guess;
     }
+    return scored_guess;
   }
 }

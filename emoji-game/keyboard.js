@@ -69,11 +69,19 @@ export class Keyboard {
   }
 
   score_keys(scored_guess) {
+    if (scored_guess.every(item => item.score === "green")) return this.reset_key_scores();
+
     this.keys.forEach(key => {
       // Find the scored_guess item whose letter property matches the key's text content
       let score = scored_guess.find(item => item.letter === key.textContent);
       let score_color = score ? score.score : "black";
       key.classList.add(`score-${score_color}`);
+    });
+  }
+
+  reset_key_scores() {
+    this.keys.forEach(key => {
+      key.classList.remove("score-black", "score-green", "score-yellow", "score-disabled"); 
     });
   }
 }
