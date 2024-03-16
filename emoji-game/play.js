@@ -32,10 +32,20 @@ for (let round = 1; round<6; round++) {
   });
 }
 
+const get_round_property = (game_emojis) => {
+  const game_emoji_row = game_emojis[active_round - 1];
+  return {
+    first: game_emoji_row[0],
+    second: game_emoji_row[1],
+    emoji_answer: game_emoji_row[2],
+    word_answer: game_emoji_row[3]
+  }
+}
+
 // Start showing the game
-spots.round_1_1.innerText = game_emojis[0][0];
-spots.round_1_2.innerText = game_emojis[0][1];
 let active_round = 1;
+spots.round_1_1.innerText = get_round_property(game_emojis).first;
+spots.round_1_2.innerText = get_round_property(game_emojis).second;
 const hint_element = document.getElementById("hint");
 const hint = todaysGame.clue;
 hint_element.innerText = `Today's hint: ${hint}`;
@@ -46,8 +56,17 @@ guesses.forEach((guess_element) => {
   const width_unit = guess_element.getBoundingClientRect().width - 5;
   guess_element.addEventListener("keyup", (e) => {
     e.stopPropagation();
-    const length = e.target.value.length;
-    const new_width = width_unit * length + 5;
-    e.target.style.width = `${new_width}px`;
+    if (e.key === "Enter") {
+      submit_guess(e.target.value)
+    }
+    else {
+      const length = e.target.value.length;
+      const new_width = width_unit * length + 5;
+      e.target.style.width = `${new_width}px`;
+    }
   })
 })
+
+const submit_guess = (guess) => {
+  console.log(guess);
+}
