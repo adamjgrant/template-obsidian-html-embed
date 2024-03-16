@@ -1,6 +1,7 @@
-const games = [
+export const games = [
   {
     "date": "2024-03-16",
+    "clue": "Love is in the air",
     "game": [
       ["☁️", "💧", "🌧️", "RAIN"],
       ["🌧️", "🌱", "🌻", "SUNFLOWER"],
@@ -11,6 +12,7 @@ const games = [
   },
   {
     "date": "2024-03-15",
+    "clue": "Love is in the air",
     "game": [
       ["🍇", "⏲️", "🍷", "WINE"],
       ["🍷", "🫧", "🍾", "CHAMPAGNE"],

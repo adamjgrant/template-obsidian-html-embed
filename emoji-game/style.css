@@ -1,16 +1,37 @@
-:root {
-  --embed-window-height: 630px;
-  --embed-window-width: 520px;
+.interface {
+  white-space: pre;
+  font-family: monospace;
 }
 
-body {
-  max-height: var(--embed-window-height);
-  max-width: var(--embed-window-width);
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  padding: 0;
-  margin: 0;
+.anchor, .interactive {
+  display: inline;
+  position: relative;
+}
+
+.anchor-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+}
+
+.interactive {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.interactive:hover {
+  font-weight: bold;
+}
+
+.emoji {
+  font-size: 18px;
+}
+
+.cursor {
+  font-size: 22px;
 }
 
 @media (prefers-color-scheme: dark) {
