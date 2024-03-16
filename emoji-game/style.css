@@ -15,8 +15,8 @@
 /* GAME BOARD */
 
 .game-board {
-  height: 66.6vh;
-  max-height: 66.6vh;
+  height: 66.6svh;
+  max-height: 66.6svh;
   width: 100vw;
   padding: 0;
   margin: 0;
@@ -88,8 +88,8 @@
 
 /* KEYBOARD */
 .keyboard {
-  height: 33.3vh;
-  max-height: 33.3vh;
+  height: 33.3svh;
+  max-height: 33.3svh;
   width: 100vw;
 }
 
