@@ -31,7 +31,9 @@ export class Game {
   }
 
   get word_answer () {
-    return this.game_emojis[this.active_round - 1][3];
+    let answer = this.game_emojis[this.active_round - 1][3];
+    answer.replace(/ /g, ""); // For now removing spaces but would be fun to do a version with them.
+    return answer;
   }
 
   set_up_round() {
@@ -82,7 +84,9 @@ export class Game {
   }
 
   score_guess(guess) {
-    const word_answer_as_array = this.word_answer.split("");
+    const word_answer_as_array = this.word_answer.split("").map(letter => {
+      return { letter: letter, score: "disabled" };
+    });
     const guess_as_array = guess.split("");
     let scored_guess = [];
     guess_as_array.forEach((letter, index) => {
@@ -90,10 +94,19 @@ export class Game {
         letter: letter,
         score: "disabled"
       };
-      if (letter === word_answer_as_array[index]) {
+      if (letter === word_answer_as_array[index].letter) {
+        word_answer_as_array[index].score = "green";
         scored_letter.score = "green";
-      } else if (word_answer_as_array.includes(letter)) {
-        scored_letter.score = "yellow";
+      } else if (word_answer_as_array.map(obj => obj.letter).includes(letter)) {
+        // Count the number of occurences of this letter in the word answer
+        // Only mark this as yellow if there are fewer either green or yellow marked instances of this letter
+        const appearances_of_this_letter = word_answer_as_array.filter(item => item.letter === letter).length;
+        const green_or_yellow_appearances = word_answer_as_array.filter(item => item.letter === letter && (item.score === "green" || item.score === "yellow")).length;
+        if (appearances_of_this_letter > green_or_yellow_appearances) {
+          const index_of_first_non_yellow_or_green_instance_of_letter_in_word_answer_as_array = word_answer_as_array.findIndex(item => item.letter === letter && item.score === "disabled");
+          word_answer_as_array[index_of_first_non_yellow_or_green_instance_of_letter_in_word_answer_as_array].score = "yellow";
+          scored_letter.score = "yellow";
+        }
       }
       scored_guess.push(scored_letter);
     });

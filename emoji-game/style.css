@@ -22,10 +22,6 @@
   margin: 0;
 }
 
-.clue { 
-  display: inline-block;
-}
-
 .entry-zone {
   display: flex;
   justify-content: center;
@@ -81,9 +77,8 @@
   display: block;
 }
 
-.equation #clue-first,
-.equation #clue-second,
-.equation #clue-equals {
+.clue { 
+  display: inline-block;
   font-family: Arial, Helvetica, sans-serif;
 }
 
