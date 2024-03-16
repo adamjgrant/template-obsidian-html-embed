@@ -48,14 +48,19 @@ export class Keyboard {
     this.enter_key = document.getElementById('enter');
     this.delete_key = document.getElementById('backspace');
     this.entry = "";
+    this.last_entry = "";
   }
 
   type(e, limit) {
     const key = e.target.textContent;
     // Update the entry string with the key that was pressed
-    if (key === enter_key) this.entry = "";
+    if (key === enter_key) {
+      this.last_entry = this.entry;
+      this.entry = "";
+      return true;
+    }
     if (key === delete_key) this.entry = this.entry.slice(0, -1);
-    else {
+    if (key !== enter_key && key !== delete_key) {
       if (this.entry.length < limit) this.entry = this.entry + key;
     }
   }

@@ -26,8 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   Array.from(document.querySelectorAll(".key")).forEach(key => {
     key.addEventListener('click', (e) => {
-      keyboard.type(e, todays_game.spacers.length);
+      const enter_key_was_pressed = keyboard.type(e, todays_game.spacers.length);
       todays_game.entry = keyboard.entry;
+      if (enter_key_was_pressed) {
+        todays_game.submit_guess(keyboard.last_entry);
+      }
     });
   });
 });
