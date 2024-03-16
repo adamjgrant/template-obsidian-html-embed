@@ -1,3 +1,5 @@
+const TIME_TO_CELEBRATE = 2000;
+
 export class Game {
   constructor(game) {
     this.game = game;
@@ -54,9 +56,11 @@ export class Game {
     });
 
     this.blinking_cursor = entry.length;
+    this.reset_clue_equals();
   }
 
   set_up_round_spacers() {
+    this.reset_clue_equals();
     const entry_zone = document.getElementById("entry-zone");
     entry_zone.innerHTML = "";
     const spacer_template = document.getElementById("game-entry-spacer");
@@ -94,11 +98,25 @@ export class Game {
     return scored_guess;
   }
 
+  get clue_equals_element() {
+    return document.getElementById("clue-equals")
+  }
+
+  reset_clue_equals() {
+    this.clue_equals_element.innerText = "?";
+    this.clue_equals_element.classList.remove("animate__animated", "animate__jackInTheBox");
+  }
+
   submit_guess(guess) {
     const scored_guess = this.score_guess(guess);
 
     if (guess === this.word_answer) {
-      this.set_up_round();
+      setTimeout(() => {
+        this.set_up_round();
+      }, TIME_TO_CELEBRATE);
+
+      this.clue_equals_element.innerText = this.emoji_answer;
+      this.clue_equals_element.classList.add("animate__animated", "animate__jackInTheBox");
     }
     else {
       // Make a copy of the entry zone above the current one with green and yellow markers

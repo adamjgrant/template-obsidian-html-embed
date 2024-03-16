@@ -22,6 +22,10 @@
   margin: 0;
 }
 
+.clue { 
+  display: inline-block;
+}
+
 .entry-zone {
   display: flex;
   justify-content: center;
