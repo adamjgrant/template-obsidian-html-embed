@@ -1,20 +1,4 @@
-:root {
-  --embed-window-height: 630px;
-  --embed-window-width: 520px;
-}
-
-body {
-  max-height: var(--embed-window-height);
-  max-width: var(--embed-window-width);
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  padding: 0;
-  margin: 0;
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    color: white;
-  }
+.interface {
+  font-family: monospace;
+  white-space: pre;
 }
