@@ -21,6 +21,10 @@ const game_emojis = todaysGame.game
 
 let spots = {}
 
+const show_hint_for_round = (round) => {
+  spots[`round_${round}_3`].innerText = game_emojis[round-1][2]
+}
+
 for (let round = 1; round<6; round++) {
   for (let column = 1; column < 4; column++) {
     spots[`round_${round}_${column}`] = document.getElementById(`round-${round}-${column}`);
@@ -28,7 +32,7 @@ for (let round = 1; round<6; round++) {
   // Double click hints
   const hint_field = spots[`round_${round}_3`];
   hint_field.addEventListener("dblclick", () => {
-    hint_field.innerText = game_emojis[round-1][2]
+    show_hint_for_round(round);
   });
 }
 
@@ -83,5 +87,15 @@ const submit_guess = (guess) => {
   let answer = get_round_property(game_emojis).word_answer.replace(/\s/g, "");
   if (formatted_guess === answer) {
     console.log("Correct (todo)")
+    show_hint_for_round(active_round);
+    lower_curtain_by_one_row();
   }
 }
+
+const lower_curtain_by_one_row = () => {
+  const row_height = 80;
+  curtain_element.style.top = parseInt(window.getComputedStyle(curtain_element).top.replace("px","")) + row_height + "px";
+  curtain_element.style.height = parseInt(window.getComputedStyle(curtain_element).height.replace("px", "")) - row_height + "px";
+}
+
+const curtain_element = document.getElementById("curtain");

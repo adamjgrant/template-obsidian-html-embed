@@ -88,6 +88,16 @@
   display: inline-block;
 }
 
+.curtain {
+  background: white;
+  pointer-events: none;
+  width: 480px;
+  height: 340px;
+  position: absolute;
+  top: 172px;
+  left: 12px;
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     color: white;
