@@ -35,3 +35,14 @@ for (let round = 1; round<6; round++) {
 // Start showing the game
 spots.round_1_1.innerText = game_emojis[0][0];
 spots.round_1_2.innerText = game_emojis[0][1];
+
+const guesses = Array.from(document.querySelectorAll(".guess input"))
+guesses.forEach((guess_element) => {
+  const width_unit = guess_element.getBoundingClientRect().width;
+  guess_element.addEventListener("keyup", (e) => {
+    e.stopPropagation();
+    const length = e.target.value.length;
+    const new_width = width_unit * length;
+    e.target.style.width = `${new_width}px`;
+  })
+})

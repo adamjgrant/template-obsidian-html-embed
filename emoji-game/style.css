@@ -44,6 +44,7 @@
   text-align: right;
   border: none;
   outline: none;
+  caret-color: transparent;
 }
 
 @keyframes blink {
