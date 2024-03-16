@@ -35,6 +35,12 @@
   margin: 0 4px; /* Optional: add some space between spacers */
   height: 50px;
   max-width: 40px;
+  padding: 3px;
+  font-size: xxx-large;
+  text-align: center;
+  font-family: "Rancho", sans-serif;
+  font-weight: 400; /* 400 or 700 */
+  line-height:44px;
 }
 
 @keyframes blink {
@@ -101,6 +107,13 @@
   transition: background-color 0.3s ease; /* Smooth background color transition */
   width: calc(9.5vw - var(--button-margin) * 2); /* Adjusted width to fit 10 buttons per row */
   height: calc(100% - 10px);
+  font-family: "Rancho", sans-serif;
+  font-size: 28px;
+}
+
+.keyboard-row .enter,
+.keyboard-row .backspace {
+  font-size: 16px;
 }
 
 .keyboard-row button:hover {
