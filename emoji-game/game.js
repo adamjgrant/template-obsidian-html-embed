@@ -152,22 +152,33 @@ export class Game {
 
     // Find out the x and y position of the original #clue-equals element
     let rect = this.clue_equals_element.getBoundingClientRect();
-    let [x, y] = [rect.left, rect.top];
+    let [x, y, width, height] = [rect.left, rect.top, rect.width, rect.height];
 
     // Create a new element with the same text content as the original #clue-equals element with the .floating_clue class
     clue_equals_copy.classList.add("floating_clue");
     clue_equals_copy.removeAttribute("id");
     document.body.appendChild(clue_equals_copy);
+    const clue_equals_copy_element = document.querySelector(".floating_clue");
     console.log(document.querySelector(".floating_clue"));
-    clue_equals_copy.style.left = `${x}px`;
-    clue_equals_copy.style.top = `${y}px`;
+    clue_equals_copy_element.style.left = `${x}px`;
+    clue_equals_copy_element.style.top = `${y}px`;
 
+    // First make the element really big and move to center.
+    let original_font_size = getComputedStyle(clue_equals_copy_element).fontSize;
+    clue_equals_copy_element.classList.add(...ANIMATION_CLASSES);
+    clue_equals_copy_element.style.left = `calc(50vw - ${width/2}px)`;
+    clue_equals_copy_element.style.top = `calc(50vh - ${height/2}px)`;
+    clue_equals_copy_element.style.fontSize = "150px";
+
+    // Halfway in, make it the original size again and move it approximately to where it will go
     setTimeout(() => {
-      clue_equals_copy.classList.add(...ANIMATION_CLASSES);
+      // TODO set left and right values to the new first clue position
+      clue_equals_copy_element.style.fontSize = original_font_size;
     }, TIME_TO_CELEBRATE/2);
     setTimeout(() => {
+      // Now that we know the position of the new first clue, move it exactly there.
       clue_equals_copy.parentNode.removeChild(clue_equals_copy);
-    }, TIME_TO_CELEBRATE);
+    }, TIME_TO_CELEBRATE + 200);
 
   }
 

@@ -87,18 +87,8 @@
   font-family: system-ui, Helvetica, sans-serif;
 }
 
-@keyframes bring_to_center_and_then_back {
-  0% {
-  }
-  40%, 60% {
-    font-size: 200px;
-  } 
-  100% {
-  }
-}
-
 .clue.floating_clue {
-  animation: bring_to_center_and_then_back 2s ease-out;
+  transition: all 1s ease-in-out;
   position: absolute;
   z-index: 1;
 }
