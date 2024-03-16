@@ -32,8 +32,8 @@ for (let round = 1; round<6; round++) {
   });
 }
 
-const get_round_property = (game_emojis) => {
-  const game_emoji_row = game_emojis[active_round - 1];
+const get_round_property = (game_emojis, round) => {
+  const game_emoji_row = game_emojis[(round ? round : active_round) - 1];
   return {
     first: game_emoji_row[0],
     second: game_emoji_row[1],
@@ -52,7 +52,7 @@ hint_element.innerText = `Today's hint: ${hint}`;
 
 const guesses = Array.from(document.querySelectorAll(".guess input"))
 guesses[0].focus();
-guesses.forEach((guess_element) => {
+guesses.forEach((guess_element, index) => {
   const width_unit = guess_element.getBoundingClientRect().width - 5;
   guess_element.addEventListener("keyup", (e) => {
     e.stopPropagation();
@@ -65,8 +65,23 @@ guesses.forEach((guess_element) => {
       e.target.style.width = `${new_width}px`;
     }
   })
+
+  const blank_holder = document.createElement("div");
+  blank_holder.classList.add("blank-holder");
+  guess_element.parentElement.appendChild(blank_holder);
+  let number_of_blanks = get_round_property(game_emojis, index + 1).word_answer.length
+  for (let x = 0; x < number_of_blanks; x++) {
+    // Create word space character
+    const blank = document.createElement("div")
+    blank.classList.add("blank");
+    blank_holder.appendChild(blank);
+  }
 })
 
 const submit_guess = (guess) => {
-  console.log(guess);
+  let formatted_guess = guess.toUpperCase().trim().replace(/\s/g, "");
+  let answer = get_round_property(game_emojis).word_answer.replace(/\s/g, "");
+  if (formatted_guess === answer) {
+    console.log("Correct (todo)")
+  }
 }

@@ -69,6 +69,24 @@
   margin: 0;
 }
 
+.blank, .blank-holder {
+  pointer-events: none;
+}
+
+.blank-holder {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.blank {
+  border-bottom: 1px double black;
+  width: 19px;
+  margin-right: 5px;
+  height: 26px;
+  display: inline-block;
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     color: white;
