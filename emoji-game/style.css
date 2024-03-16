@@ -29,7 +29,12 @@
 }
 
 .entry-zone .spacer {
+  flex: 1; /* Allocate the available space equally */
   border-radius: 3px;
+  background: #EEE;
+  margin: 0 4px; /* Optional: add some space between spacers */
+  height: 50px;
+  max-width: 40px;
 }
 
 .equation {

@@ -33,5 +33,15 @@ export class Game {
   set_up_round() {
     document.getElementById("clue-first").innerText = this.first;
     document.getElementById("clue-second").innerText = this.second;
+    this.set_up_round_spacers();
+  }
+
+  set_up_round_spacers() {
+    const entry_zone = document.getElementById("entry-zone");
+    const spacer_template = document.getElementById("game-entry-spacer");
+    Array.from({ length: this.word_answer.length }, () => {
+      const spacer = document.importNode(spacer_template.content, true);
+      entry_zone.appendChild(spacer);
+    });
   }
 }
