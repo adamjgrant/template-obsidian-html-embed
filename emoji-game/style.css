@@ -17,6 +17,27 @@
   margin: 0;
 }
 
+.entry-zone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 33.3vh;
+  max-height: 33.3vh;
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+}
+
+.entry-zone .spacer {
+  border-radius: 3px;
+}
+
+.equation {
+  text-align: center;
+  font-size: 50px;
+  display: block;
+}
+
 /* KEYBOARD */
 .keyboard {
   height: 33.3vh;

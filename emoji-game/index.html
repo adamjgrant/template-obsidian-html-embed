@@ -13,12 +13,22 @@
   </script>
 </head>
 <body>
-<template>
+
+<template id="keyboard-key-template">
   <button class="key">Q</button>
 </template>
 
+<template id="game-entry-spacer">
+  <div class="entry-spacer"></div>
+</template>
+
 <div class="interface">
-  <div class="game-board"></div>
+  <div class="game-board">
+    <div class="equation"><span id="clue-first">...</span>+<span id="clue-second">...</span>=<span id="clue-equals">?</span></div>
+    <div class="entry-zone">
+    </div>
+    <div class="history-zone"></div>
+  </div>
   <div class="keyboard" id="keyboard">
     <div class="keyboard-row" id="keyboard-row-1"></div><div class="keyboard-row" id="keyboard-row-2"></div><div class="keyboard-row" id="keyboard-row-3"></div>
   </div>

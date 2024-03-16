@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   // Get the template element
-  const template = document.querySelector('template');
+  const template = document.getElementById('keyboard-key-template');
 
   // Loop through each row
   rows.forEach((row, index) => {
