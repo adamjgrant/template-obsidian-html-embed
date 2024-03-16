@@ -1,7 +1,8 @@
+const enter_key = '⮐';
+const delete_key = '🆇';
+
 document.addEventListener('DOMContentLoaded', () => {
   // Define the rows of keys for a standard QWERTY keyboard
-  const enter_key = '⮐';
-  const delete_key = '🆇';
   const rows = [
     ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
     ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
@@ -23,14 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // Set the button text to the current key
       clone.querySelector('button').textContent = key;
+      const key_element = clone.querySelector('button')
 
       if (key === enter_key) {
-        const key_element = clone.querySelector('button')
         key_element.classList.add('enter');
         key_element.id = 'enter';
       }
       if (key === delete_key) {
-        const key_element = clone.querySelector('button')
         key_element.classList.add('backspace');
         key_element.id = 'backspace';
       }
@@ -47,5 +47,16 @@ export class Keyboard {
     this.keys = document.querySelectorAll('#keyboard button');
     this.enter_key = document.getElementById('enter');
     this.delete_key = document.getElementById('backspace');
+    this.entry = "";
+  }
+
+  type(e, limit) {
+    const key = e.target.textContent;
+    // Update the entry string with the key that was pressed
+    if (key === enter_key) this.entry = "";
+    if (key === delete_key) this.entry = this.entry.slice(0, -1);
+    else {
+      if (this.entry.length < limit) this.entry = this.entry + key;
+    }
   }
 }

@@ -34,6 +34,25 @@ export class Game {
     document.getElementById("clue-first").innerText = this.first;
     document.getElementById("clue-second").innerText = this.second;
     this.set_up_round_spacers();
+    this.blinking_cursor = 0;
+  }
+
+  get spacers() {
+    return Array.from(document.querySelectorAll(".spacer"));
+  }
+
+  set entry(entry) {
+    if (entry.length > this.spacers.length) return;
+    const entry_as_array = entry.split("");
+    this.spacers.forEach((spacer, index) => {
+      if (index < entry.length) {
+        spacer.innerText = entry_as_array[index];
+      } else {
+        spacer.innerText = "";
+      }
+    });
+
+    this.blinking_cursor = entry.length;
   }
 
   set_up_round_spacers() {
@@ -43,5 +62,11 @@ export class Game {
       const spacer = document.importNode(spacer_template.content, true);
       entry_zone.appendChild(spacer);
     });
+  }
+
+  set blinking_cursor(index = 0) {
+    if (index > this.spacers.length - 1) return this.spacers[this.spacers.length - 1].classList.remove("blink");
+    this.spacers.forEach(spacer => spacer.classList.remove("blink"));
+    this.spacers[index].classList.add("blink");
   }
 }

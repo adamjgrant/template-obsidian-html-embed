@@ -37,6 +37,22 @@
   max-width: 40px;
 }
 
+@keyframes blink {
+  0% {
+    background: #EEE;
+  }
+  50% {
+    background: #CCC;
+  }
+  100% {
+    background: #EEE;
+  } 
+}
+
+.entry-zone .spacer.blink {
+  animation: blink 1s infinite;
+}
+
 .equation {
   text-align: center;
   font-size: 50px;

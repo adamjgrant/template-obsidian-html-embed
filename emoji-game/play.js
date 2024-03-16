@@ -21,4 +21,13 @@ const today = formatDate(new Date());
 const todays_game = new Game(games.find(game => game.date === today));
 const keyboard = new Keyboard();
 
-todays_game.set_up_round();
+document.addEventListener('DOMContentLoaded', () => {
+  todays_game.set_up_round();
+
+  Array.from(document.querySelectorAll(".key")).forEach(key => {
+    key.addEventListener('click', (e) => {
+      keyboard.type(e, todays_game.spacers.length);
+      todays_game.entry = keyboard.entry;
+    });
+  });
+});
