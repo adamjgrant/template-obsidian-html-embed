@@ -32,12 +32,15 @@ export class Game {
 
   get word_answer () {
     let answer = this.game_emojis[this.active_round - 1][3];
-    answer.replace(/ /g, ""); // For now removing spaces but would be fun to do a version with them.
+    answer = answer.replace(/\s/g, ""); // For now removing spaces but would be fun to do a version with them.
     return answer;
   }
 
   set_up_round() {
     this.increment_round();
+    if (this.active_round > this.game_emojis.length) {
+      return this.show_curtain();
+    }
     document.getElementById("clue-first").innerText = this.first;
     document.getElementById("clue-second").innerText = this.second;
     this.set_up_round_spacers();
@@ -174,5 +177,14 @@ export class Game {
       last_added_entry_zone.classList.remove("main");
     }
     return scored_guess;
+  }
+
+  show_curtain() {
+    const curtain = document.getElementById("curtain");
+    // Copy the contents of #history-zone into #curtain
+    curtain.querySelector("#history-copy").innerHTML = document.getElementById("history-zone").innerHTML;
+
+    // Show curtain
+    curtain.classList.add("show");
   }
 }

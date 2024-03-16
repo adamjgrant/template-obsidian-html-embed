@@ -157,6 +157,28 @@
   background-color: #222; /* Darken the button when clicked */
 }
 
+.curtain {
+  display: none;
+}
+
+.curtain h1 { font-size: 55px; }
+.curtain p { font-size: 28px; }
+
+.curtain.show { 
+  background: white;
+  display: flex;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Rancho';
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     color: white;
