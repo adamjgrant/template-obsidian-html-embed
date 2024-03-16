@@ -124,6 +124,9 @@ export class Game {
   reset_clue_equals() {
     this.clue_equals_element.innerText = "?";
     this.clue_equals_element.classList.remove("animate__animated", "animate__jackInTheBox");
+    Array.from(document.querySelectorAll(".entry-zone")).forEach(entry_zone => {
+      entry_zone.classList.remove("hide");
+    });
   }
 
   copy_clues_to_history() {
@@ -137,6 +140,9 @@ export class Game {
   show_answer() {
     this.clue_equals_element.innerText = this.emoji_answer;
     this.clue_equals_element.classList.add("animate__animated", "animate__jackInTheBox");
+    Array.from(document.querySelectorAll(".entry-zone")).forEach(entry_zone => {
+      entry_zone.classList.add("hide");
+    });
   }
 
   submit_guess(guess) {

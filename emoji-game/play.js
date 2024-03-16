@@ -34,4 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  document.getElementById("theme-hint").innerHTML = `&ldquo;${todays_game.clue}&rdquo;`;
 });

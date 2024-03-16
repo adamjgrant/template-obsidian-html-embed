@@ -32,6 +32,10 @@
   margin-bottom: 7px;
 }
 
+.entry-zone.hide { 
+  display: none;
+}
+
 .entry-zone .spacer {
   flex: 1; /* Allocate the available space equally */
   border-radius: 3px;
@@ -79,11 +83,18 @@
 
 .clue { 
   display: inline-block;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: system-ui, Helvetica, sans-serif;
 }
 
 .history-zone .equation {
   font-size: 20px;
+}
+
+.theme-hint {    
+  margin: 0;
+  color: #AAA;
+  font-family: system-ui, Helvetica, sans-serif;
+  text-align: center;
 }
 
 /* KEYBOARD */
