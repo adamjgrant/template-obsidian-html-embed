@@ -20,3 +20,5 @@ function formatDate(date) {
 const today = formatDate(new Date());
 const todays_game = new Game(games.find(game => game.date === today));
 const keyboard = new Keyboard();
+
+todays_game.set_up_round();

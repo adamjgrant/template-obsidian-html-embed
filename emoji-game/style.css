@@ -38,6 +38,12 @@
   display: block;
 }
 
+.equation #clue-first,
+.equation #clue-second,
+.equation #clue-equals {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 /* KEYBOARD */
 .keyboard {
   height: 33.3vh;

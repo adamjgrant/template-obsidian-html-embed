@@ -29,4 +29,9 @@ export class Game {
   get word_answer () {
     return this.game_emojis[this.active_round - 1][3];
   }
+
+  set_up_round() {
+    document.getElementById("clue-first").innerText = this.first;
+    document.getElementById("clue-second").innerText = this.second;
+  }
 }
