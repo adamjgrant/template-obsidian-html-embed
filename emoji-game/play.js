@@ -1,5 +1,6 @@
 import { Game } from "./game.js";
 import { games } from "./games.js";
+import { Keyboard } from "./keyboard.js";
 
 // Function to format date to YYYY-MM-DD
 function formatDate(date) {
@@ -17,6 +18,5 @@ function formatDate(date) {
 }
 
 const today = formatDate(new Date());
-const todays_game_emojis = todaysGame.game
-
 const todays_game = new Game(games.find(game => game.date === today));
+const keyboard = new Keyboard();

@@ -13,10 +13,18 @@
   </script>
 </head>
 <body>
+<template>
+  <button class="key">Q</button>
+</template>
+
 <div class="interface">
   <div class="game-board"></div>
-  <div class="keyboard"></div>
+  <div class="keyboard" id="keyboard">
+    <div class="keyboard-row" id="keyboard-row-1"></div><div class="keyboard-row" id="keyboard-row-2"></div><div class="keyboard-row" id="keyboard-row-3"></div>
+  </div>
 </div>
+  <script src="keyboard.js" type="module"></script>
+  <script src="game.js" type="module"></script>
   <script src="games.js" type="module"></script>
   <script src="play.js" type="module"></script>
 </body>

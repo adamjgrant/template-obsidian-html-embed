@@ -1,6 +1,66 @@
+* { box-sizing: border-box; }
+
 .interface {
   white-space: pre;
   font-family: monospace;
+  display: flex;
+  flex-direction: column;
+}
+
+/* GAME BOARD */
+
+.game-board {
+  height: 66.6vh;
+  max-height: 66.6vh;
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+}
+
+/* KEYBOARD */
+.keyboard {
+  height: 33.3vh;
+  max-height: 33.3vh;
+  width: 100vw;
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  height: 25%;
+}
+
+.keyboard-row button {
+  --button-margin: 3px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  cursor: pointer;
+  box-sizing: border-box; /* Recommended for better control over padding and borders */
+  /* Custom styles below */
+  padding: 8px 10px;
+  margin: var(--button-margin);
+  background-color: #444; /* Dark gray background */
+  color: white; /* White text */
+  font-size: 16px;
+  border-radius: 4px; /* Rounded corners */
+  text-transform: uppercase; /* Capital letters */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+  width: calc(9.5vw - var(--button-margin) * 2); /* Adjusted width to fit 10 buttons per row */
+  height: calc(100% - 10px);
+}
+
+.keyboard-row button:hover {
+  background-color: #666; /* Lighten the button on hover */
+}
+
+.keyboard-row button:active {
+  background-color: #222; /* Darken the button when clicked */
 }
 
 @media (prefers-color-scheme: dark) {
