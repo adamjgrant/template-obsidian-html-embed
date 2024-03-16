@@ -41,10 +41,12 @@
   display: inline-block;
   text-transform: uppercase;
   width: calc(1ch + var(--letter-spacing));
-  text-align: right;
   border: none;
   outline: none;
   caret-color: transparent;
+  padding: 0;
+  padding-left: 5px;
+  margin: 0;
 }
 
 @keyframes blink {
@@ -55,6 +57,7 @@
 .cursor { 
   animation: blink 1s infinite; 
   display: inline-block;
+  margin-left: -10px;
 }
 
 @media (prefers-color-scheme: dark) {
