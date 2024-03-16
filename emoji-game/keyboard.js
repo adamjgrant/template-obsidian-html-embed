@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
 export class Keyboard {
   constructor() {
     this.keyboard = document.getElementById('keyboard');
-    this.keys = document.querySelectorAll('#keyboard button');
     this.enter_key = document.getElementById('enter');
     this.delete_key = document.getElementById('backspace');
     this.entry = "";
@@ -63,5 +62,18 @@ export class Keyboard {
     if (key !== enter_key && key !== delete_key) {
       if (this.entry.length < limit) this.entry = this.entry + key;
     }
+  }
+
+  get keys() {
+    return Array.from(document.querySelectorAll('#keyboard button'));
+  }
+
+  score_keys(scored_guess) {
+    this.keys.forEach(key => {
+      // Find the scored_guess item whose letter property matches the key's text content
+      let score = scored_guess.find(item => item.letter === key.textContent);
+      let score_color = score ? score.score : "black";
+      key.classList.add(`score-${score_color}`);
+    });
   }
 }

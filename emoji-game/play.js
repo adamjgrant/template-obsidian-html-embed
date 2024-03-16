@@ -24,12 +24,13 @@ const keyboard = new Keyboard();
 document.addEventListener('DOMContentLoaded', () => {
   todays_game.set_up_round();
 
-  Array.from(document.querySelectorAll(".key")).forEach(key => {
+  keyboard.keys.forEach(key => {
     key.addEventListener('click', (e) => {
       const enter_key_was_pressed = keyboard.type(e, todays_game.spacers.length);
       todays_game.entry = keyboard.entry;
       if (enter_key_was_pressed) {
-        todays_game.submit_guess(keyboard.last_entry);
+        let scored_guess = todays_game.submit_guess(keyboard.last_entry);
+        keyboard.score_keys(scored_guess);
       }
     });
   });

@@ -58,6 +58,7 @@ export class Game {
 
   set_up_round_spacers() {
     const entry_zone = document.getElementById("entry-zone");
+    entry_zone.innerHTML = "";
     const spacer_template = document.getElementById("game-entry-spacer");
     Array.from({ length: this.word_answer.length }, () => {
       const spacer = document.importNode(spacer_template.content, true);
@@ -80,7 +81,7 @@ export class Game {
     guess_as_array.forEach((letter, index) => {
       let scored_letter = {
         letter: letter,
-        score: "black"
+        score: "disabled"
       };
       if (letter === word_answer_as_array[index]) {
         scored_letter.score = "green";
@@ -103,7 +104,6 @@ export class Game {
       const entry_zone_copy = entry_zone.cloneNode(true);
       const entry_zone_holder = document.getElementById("entry-zone-holder");
       const scored_guess = this.score_guess(guess);
-      console.log(scored_guess);
       entry_zone_holder.appendChild(entry_zone_copy);
       
       // Find the entry zone we just added
@@ -115,6 +115,7 @@ export class Game {
       });
       last_added_entry_zone.removeAttribute("id");
       last_added_entry_zone.classList.remove("main");
+      return scored_guess;
     }
   }
 }

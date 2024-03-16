@@ -1,5 +1,10 @@
 * { box-sizing: border-box; }
 
+:root {
+  --green: #a1ef9a;
+  --yellow: #efd667;
+}
+
 .interface {
   white-space: pre;
   font-family: monospace;
@@ -24,6 +29,7 @@
   width: 100vw;
   padding: 0;
   margin: 0;
+  margin-bottom: 7px;
 }
 
 .entry-zone .spacer {
@@ -42,11 +48,11 @@
 }
 
 .entry-zone .spacer.score-green {
-  background: #a1ef58;
+  background: var(--green);
 }
 
 .entry-zone .spacer.score-yellow {
-  background: #FF0;
+  background: var(--yellow);
 }
 
 @keyframes blink {
@@ -115,6 +121,21 @@
   height: calc(100% - 10px);
   font-family: "Rancho", sans-serif;
   font-size: 28px;
+}
+
+.keyboard-row button.score-green {
+  background: var(--green);
+  color: black;
+}
+
+.keyboard-row button.score-yellow {
+  background: var(--yellow);
+  color: black;
+}
+
+.keyboard-row button.score-disabled {
+  background: #CCC;
+  color: #999;
 }
 
 .keyboard-row .enter,
