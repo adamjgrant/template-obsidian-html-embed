@@ -131,6 +131,7 @@
   font-size: 28px;
 }
 
+
 .keyboard-row button.score-green {
   background: var(--green);
   color: black;
@@ -141,7 +142,9 @@
   color: black;
 }
 
-.keyboard-row button.score-disabled {
+.keyboard-row button.score-disabled, 
+.keyboard-row button[disabled]:hover,
+.keyboard-row button[disabled]:active {
   background: #CCC;
   color: #999;
 }

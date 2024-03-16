@@ -1,4 +1,5 @@
 const TIME_TO_CELEBRATE = 2000;
+const MAX_NUMBER_OF_TRIES = 5;
 
 export class Game {
   constructor(game) {
@@ -6,6 +7,7 @@ export class Game {
     this.clue = game.clue;
     this.date = game.date;
     this.active_round = 0;
+    this.number_of_tries_in_round = 0;
   }
 
   increment_round() {
@@ -38,6 +40,7 @@ export class Game {
     document.getElementById("clue-second").innerText = this.second;
     this.set_up_round_spacers();
     this.blinking_cursor = 0;
+    this.number_of_tries_in_round = 0;
   }
 
   get spacers() {
@@ -115,17 +118,30 @@ export class Game {
     history_zone.appendChild(equation_copy);
   }
 
+  show_answer() {
+    this.clue_equals_element.innerText = this.emoji_answer;
+    this.clue_equals_element.classList.add("animate__animated", "animate__jackInTheBox");
+  }
+
   submit_guess(guess) {
     const scored_guess = this.score_guess(guess);
+    this.number_of_tries_in_round += 1;
 
     if (guess === this.word_answer) {
       setTimeout(() => {
         this.copy_clues_to_history();
         this.set_up_round();
       }, TIME_TO_CELEBRATE);
-
-      this.clue_equals_element.innerText = this.emoji_answer;
-      this.clue_equals_element.classList.add("animate__animated", "animate__jackInTheBox");
+      this.show_answer();
+      return false;
+    }
+    if (this.number_of_tries_in_round === MAX_NUMBER_OF_TRIES) {
+      setTimeout(() => {
+        this.copy_clues_to_history();
+        this.set_up_round();
+      }, TIME_TO_CELEBRATE);
+      this.show_answer();
+      return false;
     }
     else {
       // Make a copy of the entry zone above the current one with green and yellow markers
