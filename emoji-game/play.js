@@ -17,6 +17,7 @@ function formatDate(date) {
 
 const today = formatDate(new Date());
 const todaysGame = games.find(game => game.date === today);
+const game_emojis = todaysGame.game
 
 let spots = {}
 
@@ -24,8 +25,13 @@ for (let round = 1; round<6; round++) {
   for (let column = 1; column < 4; column++) {
     spots[`round_${round}_${column}`] = document.getElementById(`round-${round}-${column}`);
   }
+  // Double click hints
+  const hint_field = spots[`round_${round}_3`];
+  hint_field.addEventListener("dblclick", () => {
+    hint_field.innerText = game_emojis[round-1][2]
+  });
 }
 
-const game_emojis = todaysGame.game
+// Start showing the game
 spots.round_1_1.innerText = game_emojis[0][0];
 spots.round_1_2.innerText = game_emojis[0][1];
