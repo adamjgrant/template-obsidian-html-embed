@@ -1,6 +1,5 @@
 const TIME_TO_CELEBRATE = 2000;
 const MAX_NUMBER_OF_TRIES = 5;
-const ANIMATION_CLASSES = ["animate__animated", "animate__jackInTheBox"]
 
 export class Game {
   constructor(game) {
@@ -124,7 +123,6 @@ export class Game {
 
   reset_clue_equals() {
     this.clue_equals_element.innerText = "?";
-    this.clue_equals_element.classList.remove(...ANIMATION_CLASSES);
     Array.from(document.querySelectorAll(".entry-zone")).forEach(entry_zone => {
       entry_zone.classList.remove("hide");
     });
@@ -135,6 +133,11 @@ export class Game {
     const equation = document.getElementById("equation");
     // Copy equation and insert it into the history zone.
     const equation_copy = equation.cloneNode(true);
+    const answer_in_words = document.createElement("span");
+    answer_in_words.innerText = this.word_answer;
+    answer_in_words.classList.add("answer-in-words");
+    equation_copy.appendChild(answer_in_words);
+    equation_copy.removeAttribute("id");
     history_zone.appendChild(equation_copy);
   }
 
@@ -173,12 +176,11 @@ export class Game {
 
     // Halfway in, make it the original size again and move it approximately to where it will go
     setTimeout(() => {
-      clue_equals_copy_element.classList.add(...ANIMATION_CLASSES);
       clue_equals_copy_element.style.fontSize = original_font_size;
       const clue_first_element = document.getElementById("clue-first");
       const first_rect = clue_first_element.getBoundingClientRect();
-      clue_equals_copy_element.style.left = first_rect.left + "px";
-      clue_equals_copy_element.style.top = first_rect.top + "px";
+      clue_equals_copy_element.style.left = `calc(0svw + ${first_rect.left + "px"})`;
+      clue_equals_copy_element.style.top = `calc(0svw + ${first_rect.top + "px"})`;
       clue_equals_copy_element.style.fontSize = getComputedStyle(clue_first_element).fontSize;
     }, TIME_TO_CELEBRATE/2);
     setTimeout(() => {

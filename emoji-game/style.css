@@ -86,6 +86,10 @@
   opacity: 0;
 }
 
+.history-zone .equation { 
+  opacity: 1;
+}
+
 .clue { 
   display: inline-block;
   font-size: 50px;
@@ -98,8 +102,15 @@
   z-index: 1;
 }
 
-.history-zone .equation {
+.history-zone .equation,
+.history-zone .equation .clue,
+.curtain .equation,
+.curtain .equation .clue {
   font-size: 20px;
+}
+
+.answer-in-words {
+  margin-left: 5px;
 }
 
 .theme-hint {    
