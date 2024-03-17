@@ -23,7 +23,7 @@ export const games = [
 },
 {
   "date": "2024-03-18",
-  "clue": "Unexpected Transformations",
+  "clue": "Called in for questioning",
   "game": [
     ["🦇", "👨", "🦸", "HERO"],
     ["🦸", "🍞", "🥪", "SANDWICH"],
@@ -95,5 +95,15 @@ export const games = [
       ["💒", "🛏", "👶", "BABY"],
       ["👶", "📚", "🎓", "GRADUATION"]
     ]
-  }
+  }, {
+  "date": "2024-03-25",
+  "clue": "The Beginning",
+  "game": [
+    ["🐦", "🌳", "🥚", "NEST"],
+    ["🥚", "⏳", "🐥", "CHICK"],
+    ["🐥", "🌾", "🐔", "CHICKEN"],
+    ["🐔", "🌱", "💩", "POOP"],
+    ["💩", "💧", "🌍", "EARTH"]
+  ]
+}
 ]
