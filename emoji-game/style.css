@@ -29,6 +29,7 @@
   text-align: right;
   margin-right: 25px;
   color: #AAA
+  transition: opacity 0.5s ease-in-out;
 }
 
 .tooltip.show {
@@ -115,6 +116,7 @@
   display: inline-block;
   font-size: 50px;
   font-family: system-ui, Helvetica, sans-serif;
+  touch-action: none;
 }
 
 .clue.floating_clue {

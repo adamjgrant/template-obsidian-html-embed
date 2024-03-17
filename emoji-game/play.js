@@ -36,4 +36,16 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.getElementById("theme-hint").innerHTML = `&ldquo;${todays_game.clue}&rdquo;`;
+
+  const tooltip = document.getElementById("tooltip");
+  setInterval(() => {
+    tooltip.classList.add("show");
+    setTimeout(() => tooltip.classList.remove("show"), 4000);
+  }, 20000);
+
+  const clue_equals = document.getElementById("clue-equals")
+  clue_equals.addEventListener('click', () => {
+    console.log("ping");
+    todays_game.show_just_emoji_answer();
+  });
 });

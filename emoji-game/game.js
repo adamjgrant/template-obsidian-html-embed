@@ -8,6 +8,7 @@ export class Game {
     this.date = game.date;
     this.active_round = 0;
     this.number_of_tries_in_round = 0;
+    this.text_message = "";
   }
 
   increment_round() {
@@ -157,8 +158,12 @@ export class Game {
     });
   }
 
-  show_answer() {
+  show_just_emoji_answer() {
     this.clue_equals_element.innerText = this.emoji_answer;
+  }
+
+  show_answer() {
+    this.show_just_emoji_answer();
     this.animate_clue_equals();
     this.hide_entry_zones();
     this.hide_history();
