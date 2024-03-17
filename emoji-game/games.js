@@ -11,7 +11,71 @@ export const games = [
     ]
   },
   {
-    "date": "2024-03-17",
+  "date": "2024-03-17",
+  "clue": "A regretful night",
+  "game": [
+    ["🍊", "🥢", "🥕", "CARROT"],
+    ["🥕", "✊", "🥤", "JUICE"],
+    ["🥤", "🚗", "⛽", "OIL"],
+    ["⛽", "💬", "🍺", "ALCOHOL"],
+    ["🍺", "📱", "💔", "EX"]
+  ]
+},
+  
+  {
+    "date": "2024-03-18",
+    "clue": "Love is in the air",
+    "game": [
+      ["🍇", "⏲️", "🍷", "WINE"],
+      ["🍷", "🫧", "🍾", "CHAMPAGNE"],
+      ["🍾", "💍", "💒", "WEDDING"],
+      ["💒", "🛏", "👶", "BABY"],
+      ["👶", "📚", "🎓", "GRADUATION"]
+    ]
+  },
+  {
+  "date": "2024-03-19",
+  "clue": "Not all heroes wear capes",
+  "game": [
+    ["🌽", "🔥", "🍿", "POPCORN"],
+    ["🍿", "🎟️", "🎬", "MOVIE"],
+    ["🎬", "👽", "🛸", "UFO"],
+    ["🛸", "💥", "🌍", "INVASION"],
+    ["🌍", "🦸", "🏆", "VICTORY"]
+  ]
+},
+{
+  "date": "2024-03-20",
+  "clue": "Journey of a T-Shirt",
+  "game": [
+    ["🌱", "☁️", "🌿", "COTTON"],
+    ["🌿", "🏭", "🧵", "THREAD"],
+    ["🧵", "🪡", "👕", "TSHIRT"],
+    ["👕", "🎨", "👚", "FASHION"],
+    ["👚", "💰", "🛍️", "SHOPPING"]
+  ]
+},{
+  "date": "2024-03-21",
+  "clue": "A Day Outdoors",
+  "game": [
+    ["🌞", "🌲", "🏞️", "PARK"],
+    ["🏞️", "🚶", "🥾", "HIKING"],
+    ["🥾", "🏔️", "⛺", "CAMPING"],
+    ["⛺", "🔥", "🍢", "BBQ"],
+    ["🍢", "🌌", "🔭", "STARGAZING"]
+  ]
+}, {
+  "date": "2024-03-22",
+  "clue": "Cycle of Water",
+  "game": [
+    ["☁️", "⛰️", "🏞️", "LAKE"],
+    ["🏞️", "☀️", "💧", "EVAPORATION"],
+    ["💧", "🌡️", "☁️", "CONDENSATION"],
+    ["☁️", "⚡", "🌧️", "RAIN"],
+    ["🌧️", "🌍", "🌱", "GROWTH"]
+  ]
+},{
+    "date": "2024-03-23",
     "clue": "Tick-tock!",
     "game": [
       ["⏳", "⚙️", "🕰️", "CLOCK"],
@@ -21,15 +85,5 @@ export const games = [
       ["☀️", "📅", "⏰", "SCHEDULE"]
     ]
   },
-  {
-    "date": "2024-03-19",
-    "clue": "Love is in the air",
-    "game": [
-      ["🍇", "⏲️", "🍷", "WINE"],
-      ["🍷", "🫧", "🍾", "CHAMPAGNE"],
-      ["🍾", "💍", "💒", "WEDDING"],
-      ["💒", "🛏", "👶", "BABY"],
-      ["👶", "📚", "🎓", "GRADUATION"]
-    ]
-  }
+
 ]
