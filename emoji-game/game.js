@@ -8,7 +8,13 @@ export class Game {
     this.date = game.date;
     this.active_round = 0;
     this.number_of_tries_in_round = 0;
-    this.text_message = "";
+    this.text_message_object = {
+      "round-1": [],
+      "round-2": [],
+      "round-3": [],
+      "round-4": [],
+      "round-5": [],
+    };
   }
 
   increment_round() {
@@ -102,7 +108,9 @@ export class Game {
       if (letter === word_answer_as_array[index].letter) {
         word_answer_as_array[index].score = "green";
         scored_letter.score = "green";
+        this.set_text_message_for_round(true);
       } else if (word_answer_as_array.map(obj => obj.letter).includes(letter)) {
+        this.set_text_message_for_round(false);
         // Count the number of occurences of this letter in the word answer
         // Only mark this as yellow if there are fewer either green or yellow marked instances of this letter
         const appearances_of_this_letter = word_answer_as_array.filter(item => item.letter === letter).length;
@@ -117,6 +125,10 @@ export class Game {
     });
 
     return scored_guess;
+  }
+
+  set_text_message_for_round(got_it_right) {
+    this.text_message_object[`round-${this.active_round}`].push(got_it_right ? this.emoji_answer : "🟥");
   }
 
   get clue_equals_element() {
@@ -266,5 +278,17 @@ export class Game {
 
     // Show curtain
     curtain.classList.add("show");
+  }
+
+  get text_message() {
+    const human_readable_todays_date = new Date(this.date).toLocaleDateString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    return `
+      ${human_readable_todays_date}:
+      ${this.text_message_object["round-1"].join("")}
+      ${this.text_message_object["round-2"].join("")}
+      ${this.text_message_object["round-3"].join("")}
+      ${this.text_message_object["round-4"].join("")}
+      ${this.text_message_object["round-5"].join("")}
+    `
   }
 }
