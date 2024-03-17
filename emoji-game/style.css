@@ -23,6 +23,18 @@
   overflow: auto;
 }
 
+.tooltip {
+  opacity: 0;
+  margin: -20px 0;
+  text-align: right;
+  margin-right: 25px;
+  color: #AAA
+}
+
+.tooltip.show {
+  opacity: 1;
+}
+
 .entry-zone {
   display: flex;
   justify-content: center;
